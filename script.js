@@ -60,3 +60,42 @@ var questions = [
         choiceC: "Dumbo",
     correct: "B"
     }];
+
+var start = document.getElementById("start");
+var question = document.getElementById("question");
+var choiceA = document.getElementById("A");
+var choiceB = document.getElementById("B");
+var choiceC = document.getElementById("C");
+
+function startQuiz() {
+    start.classList.add("hidden");
+    renderQuestion();
+    quiz.classList.remove("hidden");
+    timerInterval = setInterval(renderTimer, 1000);
+  }
+
+  start.addEventListener("click", startQuiz);
+
+function renderQuestion() {
+    var q = questions[runningQuestion];
+    question.innerHTML = "<p>" + q.question + "</p>";
+    choiceA.innerHTML = q.choiceA;
+    choiceB.innerHTML = q.choiceB;
+    choiceC.innerHTML = q.choiceC;
+  }
+
+  var lastQuestion = questions.length - 1;
+  var runningQuestion = 0;
+  var count = 0;
+  var timeLeft = 80;
+  var timeInterval;
+  
+  
+function renderTimer() {
+    timeLeft = timeLeft - 1;
+    counter.innerText = timeLeft;
+    if (timeLeft <= 0) {
+      end();
+    }
+    
+  }
