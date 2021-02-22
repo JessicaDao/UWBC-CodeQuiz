@@ -12,26 +12,40 @@
     <header>
         <a href="index.html"><h1>Random Quiz</h1></a>
       </header>
-    <div id="container">
+<div id="container">
         <div class="col-md-12 text-center">
 <!--Start-->
-            <button type="button" id="start" class="btn btn-secondary btn-lg">Start!</button>
-            <div id="quiz" class="hidden">
+    <button type="button" id="start" class="btn btn-secondary btn-lg">Start!</button>
+        <div id="quiz" class="hidden">
 <!--Questions-->
-                <div id="question"></div>
+        <div id="question"></div>
 <!--Choice buttons-->
-                <div id="choices">
-                  <button class="choice" id="A" onclick="checkAnswer('A')"></button>
-                  <button class="choice" id="B" onclick="checkAnswer('B')"></button>
-                  <button class="choice" id="C" onclick="checkAnswer('C')"></button>
-                </div>
-<!--Timer-->
-                <div id="timer">Timer
-                  <div id="timeLeft">80</div>
-                </div>
-              </div> 
-        </div>
+    <div id="choices">
+        <button class="choice" id="A" onclick="checkAnswer('A')"></button>
+        <button class="choice" id="B" onclick="checkAnswer('B')"></button>
+        <button class="choice" id="C" onclick="checkAnswer('C')"></button>
     </div>
+<!--Timer-->
+    <div id="timer">Timer
+        <div id="timeLeft">80</div>
+    </div>
+    </div> 
+</div>
+<!--Scores Section-->
+<div id="scores" class="hidden">
+    <div id="enterScores">
+      <p>Score <span id="userScore"></span></p>
+      <label>Enter your initials to scare your high score:</label>
+      <input id="initials"/>
+      <button id="saveScores">Save High Score</button>
+    </div>
+<!--High Scores-->
+    <div id="highScores" class="hidden">
+      <p>High Scores:</p>
+      <p id="dataOutput"></p></br>
+    </div>
+  </div>
+</div>
     <script src="script.js"></script>
 </body>
 </html>
