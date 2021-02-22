@@ -66,6 +66,8 @@ var question = document.getElementById("question");
 var choiceA = document.getElementById("A");
 var choiceB = document.getElementById("B");
 var choiceC = document.getElementById("C");
+var counter = document.getElementById("timeLeft");
+
 
 function startQuiz() {
     start.classList.add("hidden");
@@ -98,4 +100,21 @@ function renderTimer() {
       end();
     }
     
+  }
+  function checkAnswer(answer) {
+    if (answer == questions[runningQuestion].correct) {
+      console.log("+1 Correct!")
+    } else {
+      console.log("-1 Incorrect!");
+      timeLeft = timeLeft - 10;
+      counter.innerText = timeLeft;
+    }
+  
+    count = 0;
+    if (runningQuestion < lastQuestion) {
+      runningQuestion++;
+      renderQuestion();
+    } else {
+      end();
+    }
   }
