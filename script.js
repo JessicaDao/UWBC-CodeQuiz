@@ -118,3 +118,10 @@ function renderTimer() {
       end();
     }
   }
+  
+  function end() {
+    clearInterval(timerInterval);
+    quiz.classList.add("hidden");
+    scores.classList.remove("hidden");
+    userScore.innerHTML = timeLeft;
+  }
