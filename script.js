@@ -118,10 +118,54 @@ function renderTimer() {
       end();
     }
   }
-  
+
   function end() {
     clearInterval(timerInterval);
     quiz.classList.add("hidden");
     scores.classList.remove("hidden");
     userScore.innerHTML = timeLeft;
   }
+
+  function renderHigh() {
+    var data = savedScores();
+    var output = "";
+    if (data.scores) {
+      for (i = 0; i < data.scores.length; i++) {
+        output += `${data.scores[i].initials} ${data.scores[i].score}`;
+      }
+    }
+    dataOutput.innerHTML = output;
+    enterScores.classList.add("hidden");
+    highScores.classList.remove("hidden");
+  }
+  
+  function saveScores() {
+    var data = savedScores();
+    if (data.scores) {
+      data.scores.push({
+        initials: initials.value.toUpperCase(),
+        score: timeLeft,
+      });
+    } else {
+      data.scores = [
+        {
+          initials: initials.value.toUpperCase(),
+          score: timeLeft,
+        },
+      ];
+    }
+    localStorage.setItem("scores", JSON.stringify(data));
+    renderHigh();
+  }
+  
+  
+  function savedScores() {
+    var data = localStorage.getItem("scores");
+    if (data) {
+      return JSON.parse(data);
+    } else {
+      return {};
+    }
+  }
+  
+  saveBtn.addEventListener("click",saveScores);
